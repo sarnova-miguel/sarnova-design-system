@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Raleway } from "next/font/google";
 import "./globals.css";
 import SarnovaHeader from "@/components/SarnovaHeader";
-
+import NavSidebar from "@/components/NavSidebar";
+import Container from "@/components/Container";
 
 const raleway = Raleway({
   variable: "--font-raleway",
@@ -21,11 +22,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${raleway.variable} antialiased`}
-      >
+      <body className={`${raleway.variable} antialiased flex flex-col`}>
         <SarnovaHeader />
-        {children}
+        <Container className="bg-blue-400 flex-1">
+          <main>
+            <NavSidebar />
+            {children}
+          </main>
+        </Container>
       </body>
     </html>
   );

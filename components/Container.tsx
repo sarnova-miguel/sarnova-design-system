@@ -1,8 +1,9 @@
+import { cn } from '@/lib/utils'
 import React from 'react'
 
-const Container = ({children}: {children: React.ReactNode}) => {
+const Container = ({children, className}: {children: React.ReactNode, className?: string}) => {
   return (
-    <div className='p-4 max-w-svw min-h-svh'>{children}</div>
+    <div className={cn('p-4 max-w-full min-h-full', className)}>{children}</div>
   )
 }
 

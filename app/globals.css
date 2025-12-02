@@ -115,8 +115,11 @@
 }
 
 body {
+  width: 100%;
+  min-height: 100vh;
   color: var(--font-color);
   font-family: var(--font-sans);
+  scroll-behavior: smooth;
 }
 
 @layer base {
@@ -156,5 +159,12 @@ body {
   .brand-filter-btn.dt.active,
   .brand-filter-btn.dt:active {
     @apply shadow-md shadow-blue-900;
+  }
+  .nav-sidebar {
+        /* @apply fixed top-0 left-0 h-screen w-64 bg-gray-100 dark:bg-gray-800; */
+    @apply min-h-screen w-full p-4 bg-amber-600;
+  }
+  .nav-sidebar a {
+    @apply hover:font-semibold
   }
 }
