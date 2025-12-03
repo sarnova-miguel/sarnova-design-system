@@ -1,8 +1,11 @@
 import Image from "next/image";
+import Guidelines from "@/components/guidelines/Guidelines";
 
 export default function Home() {
   return (
-      <section>homepage</section>
+      <div>
+        <Guidelines />
+      </div>
     
   );
 }
