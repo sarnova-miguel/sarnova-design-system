@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Raleway } from "next/font/google";
+import { BrandProvider } from "@/context/BrandContext";
 import "./globals.css";
 import SarnovaHeader from "@/components/SarnovaHeader";
 import MobileNavSidebar from "@/components/MobileNavSidebar";
@@ -24,14 +25,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${raleway.variable} antialiased flex flex-col`}>
-        <SarnovaHeader />
-        <Container className="flex-1">
-          <main className="md:flex md:gap-8">
-            <MobileNavSidebar />
-            <NavSidebar />
-            {children}
-          </main>
-        </Container>
+        <BrandProvider>
+          <SarnovaHeader />
+          <Container className="flex-1">
+            <main className="md:flex md:gap-8">
+              <MobileNavSidebar />
+              <NavSidebar />
+              {children}
+            </main>
+          </Container>
+        </BrandProvider>
       </body>
     </html>
   );
