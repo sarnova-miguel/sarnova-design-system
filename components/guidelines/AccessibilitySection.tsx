@@ -13,10 +13,7 @@ import {
 } from "lucide-react";
 import {
   Card,
-  CardAction,
   CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -159,7 +156,7 @@ const AccessibilitySection = () => {
       </div>
 
       <CopyHeader>Accessibility Resources</CopyHeader>
-      <ul className="list-disc ps-8">
+      <ul className="list-disc ps-8 space-y-1">
         <li>
           <Link href={"https://www.w3.org/WAI/"} className="link-hover">
             World Wide Web Consortium Web Accessibility Initiative (WAI)

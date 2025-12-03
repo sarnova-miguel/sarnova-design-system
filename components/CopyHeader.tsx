@@ -1,8 +1,9 @@
+import { cn } from '@/lib/utils'
 import React from 'react'
 
-const CopyHeader = ({children}: {children: React.ReactNode }) => {
+const CopyHeader = ({children, className}: {children: React.ReactNode, className?: string }) => {
   return (
-    <h4 className='font-semibold text-base md:text-lg mb-4'>{children}</h4>
+    <h4 className={cn('font-semibold text-base md:text-lg mb-4', className)}>{children}</h4>
   )
 }
 

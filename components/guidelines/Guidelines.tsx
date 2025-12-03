@@ -1,18 +1,18 @@
 import React from "react";
 import SectionHeader from "@/components/SectionHeader";
-import SectionSubHeader from "@/components/SectionSubHeader";
 import TechStackDocs from "./TechStackDocs";
 import BestPractices from "./BestPractices";
 import AccessibilitySection from "./AccessibilitySection";
+import AI from "./AI";
 
 const Guidelines = () => {
   return (
-    <section>
+    <section className="mb-12 md:mb-16">
       <SectionHeader anchor="guidelines">Guidelines</SectionHeader>
       <TechStackDocs />
       <BestPractices />
       <AccessibilitySection />
-      <SectionSubHeader anchor="ai">AI</SectionSubHeader>
+      <AI />
     </section>
   );
 };

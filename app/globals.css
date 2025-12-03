@@ -176,4 +176,7 @@ body {
   .link-hover {
     @apply text-blue-700 hover:text-blue-800 hover:font-semibold;
   }
+  .code {
+    @apply bg-gray-800 p-0.5 rounded font-serif text-base text-amber-500;
+  }
 }
