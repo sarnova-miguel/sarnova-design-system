@@ -114,12 +114,16 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+html {
+  scroll-behavior: smooth;
+  font-size: 100%;
+}
+
 body {
   width: 100%;
   min-height: 100vh;
   color: var(--font-color);
   font-family: var(--font-sans);
-  scroll-behavior: smooth;
 }
 
 @layer base {
@@ -161,10 +165,15 @@ body {
     @apply shadow-md shadow-blue-900;
   }
   .nav-sidebar {
-        /* @apply fixed top-0 left-0 h-screen w-64 bg-gray-100 dark:bg-gray-800; */
-    @apply min-h-screen w-full p-4 bg-amber-600;
+    @apply min-h-screen w-full md:max-w-64 p-4 rounded bg-gray-300;
   }
   .nav-sidebar a {
     @apply hover:font-semibold
+  }
+  .brand-badge {
+    @apply p-2 rounded-sm text-sm font-semibold leading-none w-fit mb-2;
+  }
+  .link-hover {
+    @apply text-blue-700 hover:text-blue-800 hover:font-semibold;
   }
 }
