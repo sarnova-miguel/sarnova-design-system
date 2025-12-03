@@ -19,7 +19,7 @@ const HeaderBrandFilter = () => {
           <CollapsibleTrigger>
             <p className="text-sm mb-2 flex flex-row gap-2">
               Filter by Brand:{" "}
-              <ChevronDown className={`${isOpen ? "rotate-180" : ""}`} />
+              <ChevronDown className={`transition-all duration-300 ${isOpen ? "rotate-180" : ""}`} />
             </p>
           </CollapsibleTrigger>
           <CollapsibleContent>
