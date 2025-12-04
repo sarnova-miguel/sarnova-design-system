@@ -72,7 +72,7 @@ const AI = () => {
       </ul>
 
       <CopyHeader className="md:text-center">Example:  AI Coding Rules</CopyHeader>
-      <div className="rounded-md bg-amber-50 p-4 md:w-3/4 lg:w-1/2 md:mx-auto">
+      <div className="rounded-md border border-gray-300 bg-amber-50 p-4 md:w-3/4 lg:w-1/2 md:mx-auto">
         <p className="mb-4"># AI Coding Instructions</p>
         <p className="mb-4">
             This project is an eCommerce web application that allows users to purchase products. The application is built using Next.js, Tailwind CSS, TypeScript and Node.js, and it uses Miscrosoft SQL Server as the database.
