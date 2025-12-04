@@ -2,11 +2,12 @@ import React from "react";
 import SectionSubHeader from "../SectionSubHeader";
 import SectionDesc from "../SectionDesc";
 import CopyHeader from "../CopyHeader";
+import { BrainCircuit } from 'lucide-react';
 
 const AI = () => {
   return (
     <div className="mb-10">
-      <SectionSubHeader anchor="ai">AI</SectionSubHeader>
+      <SectionSubHeader anchor="ai" className='flex items-center gap-2'><BrainCircuit size={32} />AI</SectionSubHeader>
       <SectionDesc>
         Sarnova team best practices for developing with AI
       </SectionDesc>

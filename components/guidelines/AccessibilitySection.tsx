@@ -17,11 +17,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { HeartHandshake } from 'lucide-react';
 
 const AccessibilitySection = () => {
   return (
     <div className="mb-10">
-      <SectionSubHeader anchor="accessibility">Accessibility</SectionSubHeader>
+      <SectionSubHeader anchor="accessibility" className='flex items-center gap-2'><HeartHandshake size={32} /> Accessibility</SectionSubHeader>
       <SectionDesc>
         Accessibility is everyone&apos;s responsibility. Sarnova firmly believes
         that web and software experiences should be accessible for everyone.

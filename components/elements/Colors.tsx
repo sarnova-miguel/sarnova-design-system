@@ -8,13 +8,14 @@ import TABadge from "../TABadge";
 import CPBadge from "../CPBadge";
 import DTBadge from "../DTBadge";
 import ABBadge from "../ABBadge";
+import { Palette } from 'lucide-react';
 
 const Colors = () => {
   const { brand } = useBrand();
 
   return (
     <div className="mb-10">
-      <SectionSubHeader anchor="colors">Colors</SectionSubHeader>
+      <SectionSubHeader anchor="colors" className='flex items-center gap-2'><Palette size={32} /> Colors</SectionSubHeader>
       <SectionDesc>Primary and secondary colors per brand</SectionDesc>
       {(brand === "all" ||
         brand === "bt" ||

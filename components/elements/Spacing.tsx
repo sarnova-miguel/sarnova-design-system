@@ -8,13 +8,14 @@ import TABadge from "../TABadge";
 import CPBadge from "../CPBadge";
 import DTBadge from "../DTBadge";
 import ABBadge from "../ABBadge";
+import { RulerDimensionLine } from 'lucide-react';
 
 const Spacing = () => {
   const { brand } = useBrand();
 
   return (
     <div className="mb-10">
-      <SectionSubHeader anchor="spacing">Spacing</SectionSubHeader>
+      <SectionSubHeader anchor="spacing" className='flex items-center gap-2'><RulerDimensionLine size={32} /> Spacing</SectionSubHeader>
       <SectionDesc>Spacing guidelines for all elements per brand</SectionDesc>
       {(brand === "all" ||
         brand === "bt" ||

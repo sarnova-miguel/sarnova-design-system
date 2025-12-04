@@ -1,11 +1,12 @@
 import React from 'react'
 import SectionSubHeader from '../SectionSubHeader'
 import SectionDesc from '../SectionDesc'
+import { Trophy } from 'lucide-react';
 
 const BestPractices = () => {
   return (
     <div className='mb-10'>
-        <SectionSubHeader anchor='best-practices'>Best Practices</SectionSubHeader>
+        <SectionSubHeader anchor='best-practices' className='flex items-center gap-2'><Trophy size={32} /> Best Practices</SectionSubHeader>
         <SectionDesc>Sarnova team naming conventions, best practices, and coding standards</SectionDesc>
         <ul className="list-disc ps-8 space-y-1">
           <li>

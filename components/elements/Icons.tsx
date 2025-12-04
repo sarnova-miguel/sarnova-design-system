@@ -8,13 +8,14 @@ import TABadge from "../TABadge";
 import CPBadge from "../CPBadge";
 import DTBadge from "../DTBadge";
 import ABBadge from "../ABBadge";
+import { ImageUpscale } from 'lucide-react';
 
 const Icons = () => {
   const { brand } = useBrand();
 
   return (
     <div className="mb-10">
-      <SectionSubHeader anchor="icons">Icons</SectionSubHeader>
+      <SectionSubHeader anchor="icons" className='flex items-center gap-2'><ImageUpscale size={32} /> Icons</SectionSubHeader>
       <SectionDesc>Commonly used icons per brand</SectionDesc>
       {(brand === "all" ||
         brand === "bt" ||

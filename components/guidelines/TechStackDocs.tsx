@@ -2,11 +2,12 @@ import React from 'react'
 import SectionSubHeader from "@/components/SectionSubHeader";
 import Link from 'next/link';
 import SectionDesc from '../SectionDesc';
+import { Cpu } from 'lucide-react';
 
 const TechStackDocs = () => {
   return (
     <div className='mb-10'>
-        <SectionSubHeader anchor="docs">Tech Stack Docs</SectionSubHeader>
+        <SectionSubHeader anchor="docs" className='flex items-center gap-2'><Cpu size={32} /> Tech Stack Docs</SectionSubHeader>
         <SectionDesc>
             Quick links to the documentation for the tech stack used at Sarnova.
         </SectionDesc>

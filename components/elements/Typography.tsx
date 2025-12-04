@@ -8,13 +8,14 @@ import TABadge from "../TABadge";
 import CPBadge from "../CPBadge";
 import DTBadge from "../DTBadge";
 import ABBadge from "../ABBadge";
+import { FileType } from 'lucide-react';
 
 const Typography = () => {
   const { brand } = useBrand();
 
   return (
     <div className="mb-10">
-      <SectionSubHeader anchor="typography">Typography</SectionSubHeader>
+      <SectionSubHeader anchor="typography" className='flex items-center gap-2'><FileType size={32} /> Typography</SectionSubHeader>
       <SectionDesc>
         Typography guidelines for all elements per brand
       </SectionDesc>
