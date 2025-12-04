@@ -6,6 +6,7 @@ import SarnovaHeader from "@/components/SarnovaHeader";
 import MobileNavSidebar from "@/components/MobileNavSidebar";
 import Container from "@/components/Container";
 import NavSidebar from "@/components/NavSidebar";
+import HeaderHeightObserver from "@/components/HeaderHeightObserver";
 
 const raleway = Raleway({
   variable: "--font-raleway",
@@ -27,6 +28,7 @@ export default function RootLayout({
       <body className={`${raleway.variable} antialiased flex flex-col`}>
         <BrandProvider>
           <SarnovaHeader />
+          <HeaderHeightObserver />
           <Container className="flex-1">
             <main className="md:flex md:gap-8">
               <MobileNavSidebar />
