@@ -8,7 +8,7 @@ const TechStackDocs = () => {
     <div className='mb-10'>
         <SectionSubHeader anchor="docs">Tech Stack Docs</SectionSubHeader>
         <SectionDesc>
-            Quick links to the documentation for the tech stack used in this project.
+            Quick links to the documentation for the tech stack used at Sarnova.
         </SectionDesc>
         <ul className='list-disc ps-8 space-y-1'>
             <li>
