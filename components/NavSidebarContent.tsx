@@ -44,6 +44,7 @@ const NavSidebarContent = ({
           <AccordionTrigger>Components</AccordionTrigger>
           <AccordionContent>
             <div className="flex flex-col gap-4">
+              <Link href={"#badge"} onClick={onLinkClick}>Badge</Link>
               <Link href={"#breadcrumb"} onClick={onLinkClick}>Breadcrumb</Link>
               <Link href={"#button"} onClick={onLinkClick}>Button</Link>
               <Link href={"#carousel"} onClick={onLinkClick}>Carousel</Link>
