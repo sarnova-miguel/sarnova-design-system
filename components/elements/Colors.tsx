@@ -8,14 +8,17 @@ import TABadge from "../TABadge";
 import CPBadge from "../CPBadge";
 import DTBadge from "../DTBadge";
 import ABBadge from "../ABBadge";
-import { Palette } from 'lucide-react';
+import { Palette } from "lucide-react";
+import ColorSwatch from "./ColorSwatch";
 
 const Colors = () => {
   const { brand } = useBrand();
 
   return (
     <div className="mb-10">
-      <SectionSubHeader anchor="colors" className='flex items-center gap-2'><Palette size={32} /> Colors</SectionSubHeader>
+      <SectionSubHeader anchor="colors" className="flex items-center gap-2">
+        <Palette size={32} /> Colors
+      </SectionSubHeader>
       <SectionDesc>Primary and secondary colors per brand</SectionDesc>
       {(brand === "all" ||
         brand === "bt" ||
@@ -23,7 +26,11 @@ const Colors = () => {
         brand === "cp" ||
         brand === "dt") && (
         <div className="mb-6">
-          <ABBadge/>
+          <ABBadge />
+          <div className="flex flex-wrap items-center gap-4 gap-y-6">
+            <ColorSwatch hex="#ffffff" name="White" />
+            <ColorSwatch hex="#000000" name="Black" className="text-white" />
+          </div>
         </div>
       )}
       {(brand === "all" || brand === "bt") && (
