@@ -12,7 +12,7 @@ import { ChevronDown } from "lucide-react";
 
 const HeaderBrandFilter = () => {
   const { brand, updateBrand } = useBrand();
-  const [ isOpen, setIsOpen ] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
@@ -35,7 +35,10 @@ const HeaderBrandFilter = () => {
                   brand === "all" ? "active" : ""
                 }`}
                 type="button"
-                onClick={() => updateBrand("all")}
+                onClick={() => {
+                  setIsOpen(false);
+                  updateBrand("all");
+                }}
               >
                 All
               </button>
@@ -44,7 +47,10 @@ const HeaderBrandFilter = () => {
                   brand === "bt" ? "active" : ""
                 }`}
                 type="button"
-                onClick={() => updateBrand("bt")}
+                onClick={() => {
+                  updateBrand("bt");
+                  setIsOpen(false);
+                }}
               >
                 <Image
                   src={
@@ -60,7 +66,10 @@ const HeaderBrandFilter = () => {
                   brand === "ta" ? "active" : ""
                 }`}
                 type="button"
-                onClick={() => updateBrand("ta")}
+                onClick={() => {
+                  updateBrand("ta");
+                  setIsOpen(false);
+                }}
               >
                 <Image
                   src={
@@ -76,7 +85,10 @@ const HeaderBrandFilter = () => {
                   brand === "cp" ? "active" : ""
                 }`}
                 type="button"
-                onClick={() => updateBrand("cp")}
+                onClick={() => {
+                  updateBrand("cp");
+                  setIsOpen(false);
+                }}
               >
                 <Image
                   src={
@@ -92,7 +104,10 @@ const HeaderBrandFilter = () => {
                   brand === "dt" ? "active" : ""
                 }`}
                 type="button"
-                onClick={() => updateBrand("dt")}
+                onClick={() => {
+                  updateBrand("dt");
+                  setIsOpen(false);
+                }}
               >
                 <Image
                   src={
@@ -113,17 +128,15 @@ const HeaderBrandFilter = () => {
         <div className="md:grid md:grid-cols-2 md:gap-4 lg:flex lg:flex-wrap lg:justify-center lg:items-center lg:gap-6">
           <button
             className={`brand-filter-btn all sm:justify-self-end ${
-                  brand === "all" ? "active" : ""
-                }`}
+              brand === "all" ? "active" : ""
+            }`}
             type="button"
             onClick={() => updateBrand("all")}
           >
             All
           </button>
           <button
-            className={`brand-filter-btn bt ${
-              brand === "bt" ? "active" : ""
-            }`}
+            className={`brand-filter-btn bt ${brand === "bt" ? "active" : ""}`}
             type="button"
             onClick={() => updateBrand("bt")}
           >
@@ -153,9 +166,7 @@ const HeaderBrandFilter = () => {
             />
           </button>
           <button
-            className={`brand-filter-btn cp ${
-              brand === "cp" ? "active" : ""
-            }`}
+            className={`brand-filter-btn cp ${brand === "cp" ? "active" : ""}`}
             type="button"
             onClick={() => updateBrand("cp")}
           >
