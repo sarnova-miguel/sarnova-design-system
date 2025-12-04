@@ -12,7 +12,7 @@ import { ChevronDown } from "lucide-react";
 
 const HeaderBrandFilter = () => {
   const { brand, updateBrand } = useBrand();
-  const [isOpen, setIsOpen] = useState(false);
+  const [ isOpen, setIsOpen ] = useState(false);
 
   return (
     <>
@@ -31,14 +31,18 @@ const HeaderBrandFilter = () => {
           <CollapsibleContent>
             <div className="flex flex-col sm:grid sm:grid-cols-2 items-center gap-2 sm:gap-4">
               <button
-                className="brand-filter-btn all sm:justify-self-end"
+                className={`brand-filter-btn all sm:justify-self-end ${
+                  brand === "all" ? "active" : ""
+                }`}
                 type="button"
                 onClick={() => updateBrand("all")}
               >
                 All
               </button>
               <button
-                className="brand-filter-btn bt"
+                className={`brand-filter-btn bt ${
+                  brand === "bt" ? "active" : ""
+                }`}
                 type="button"
                 onClick={() => updateBrand("bt")}
               >
@@ -52,7 +56,9 @@ const HeaderBrandFilter = () => {
                 />
               </button>
               <button
-                className="brand-filter-btn ta sm:justify-self-end"
+                className={`brand-filter-btn ta sm:justify-self-end ${
+                  brand === "ta" ? "active" : ""
+                }`}
                 type="button"
                 onClick={() => updateBrand("ta")}
               >
@@ -66,7 +72,9 @@ const HeaderBrandFilter = () => {
                 />
               </button>
               <button
-                className="brand-filter-btn cp"
+                className={`brand-filter-btn cp ${
+                  brand === "cp" ? "active" : ""
+                }`}
                 type="button"
                 onClick={() => updateBrand("cp")}
               >
@@ -80,7 +88,9 @@ const HeaderBrandFilter = () => {
                 />
               </button>
               <button
-                className="brand-filter-btn dt sm:justify-self-end"
+                className={`brand-filter-btn dt sm:justify-self-end ${
+                  brand === "dt" ? "active" : ""
+                }`}
                 type="button"
                 onClick={() => updateBrand("dt")}
               >
@@ -102,14 +112,18 @@ const HeaderBrandFilter = () => {
         <p className="text-sm mb-2 text-center">Filter by Brand:</p>
         <div className="md:grid md:grid-cols-2 md:gap-4 lg:flex lg:flex-wrap lg:justify-center lg:items-center lg:gap-6">
           <button
-            className="brand-filter-btn all sm:justify-self-end"
+            className={`brand-filter-btn all sm:justify-self-end ${
+                  brand === "all" ? "active" : ""
+                }`}
             type="button"
             onClick={() => updateBrand("all")}
           >
             All
           </button>
           <button
-            className="brand-filter-btn bt"
+            className={`brand-filter-btn bt ${
+              brand === "bt" ? "active" : ""
+            }`}
             type="button"
             onClick={() => updateBrand("bt")}
           >
@@ -123,7 +137,9 @@ const HeaderBrandFilter = () => {
             />
           </button>
           <button
-            className="brand-filter-btn ta md:justify-self-end"
+            className={`brand-filter-btn ta md:justify-self-end ${
+              brand === "ta" ? "active" : ""
+            }`}
             type="button"
             onClick={() => updateBrand("ta")}
           >
@@ -137,7 +153,9 @@ const HeaderBrandFilter = () => {
             />
           </button>
           <button
-            className="brand-filter-btn cp"
+            className={`brand-filter-btn cp ${
+              brand === "cp" ? "active" : ""
+            }`}
             type="button"
             onClick={() => updateBrand("cp")}
           >
@@ -149,7 +167,9 @@ const HeaderBrandFilter = () => {
             />
           </button>
           <button
-            className="brand-filter-btn dt md:justify-self-end"
+            className={`brand-filter-btn dt md:justify-self-end ${
+              brand === "dt" ? "active" : ""
+            }`}
             type="button"
             onClick={() => updateBrand("dt")}
           >
