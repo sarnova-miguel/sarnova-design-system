@@ -7,6 +7,7 @@ import BTBadge from "../BTBadge";
 import TABadge from "../TABadge";
 import CPBadge from "../CPBadge";
 import DTBadge from "../DTBadge";
+import ABBadge from "../ABBadge";
 
 const Spacing = () => {
   const { brand } = useBrand();
@@ -15,6 +16,15 @@ const Spacing = () => {
     <div className="mb-10">
       <SectionSubHeader anchor="spacing">Spacing</SectionSubHeader>
       <SectionDesc>Spacing guidelines for all elements per brand</SectionDesc>
+      {(brand === "all" ||
+        brand === "bt" ||
+        brand === "ta" ||
+        brand === "cp" ||
+        brand === "dt") && (
+        <div className="mb-6">
+          <ABBadge />
+        </div>
+      )}
       {(brand === "all" || brand === "bt") && (
         <div className="mb-6">
           <BTBadge />

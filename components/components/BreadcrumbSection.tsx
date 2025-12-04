@@ -1,22 +1,22 @@
 "use client";
 
-import { useBrand } from "@/context/BrandContext";
 import SectionSubHeader from "../SectionSubHeader";
 import SectionDesc from "../SectionDesc";
+import { useBrand } from "@/context/BrandContext";
+import ABBadge from "../ABBadge";
 import BTBadge from "../BTBadge";
-import TABadge from "../TABadge";
 import CPBadge from "../CPBadge";
 import DTBadge from "../DTBadge";
-import ABBadge from "../ABBadge";
+import TABadge from "../TABadge";
 
-const Typography = () => {
+const BreadcrumbSection = () => {
   const { brand } = useBrand();
 
   return (
     <div className="mb-10">
-      <SectionSubHeader anchor="typography">Typography</SectionSubHeader>
+      <SectionSubHeader anchor="breadcrumb">Breadcrumb</SectionSubHeader>
       <SectionDesc>
-        Typography guidelines for all elements per brand
+        Defines the hierarchy of the current page in a website
       </SectionDesc>
       {(brand === "all" ||
         brand === "bt" ||
@@ -51,4 +51,4 @@ const Typography = () => {
   );
 };
 
-export default Typography;
+export default BreadcrumbSection;

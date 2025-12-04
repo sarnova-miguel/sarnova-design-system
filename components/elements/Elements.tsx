@@ -7,7 +7,7 @@ import Spacing from './Spacing'
 
 const Elements = () => {
   return (
-    <section className='mb-12 md:mb-16'>
+    <section className='section'>
         <SectionHeader anchor="elements">Elements</SectionHeader>
         <Colors />
         <Icons />

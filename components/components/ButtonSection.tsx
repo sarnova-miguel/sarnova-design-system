@@ -1,54 +1,52 @@
-"use client";
+'use client';
 
 import { useBrand } from "@/context/BrandContext";
-import SectionSubHeader from "../SectionSubHeader";
-import SectionDesc from "../SectionDesc";
+import SectionSubHeader from '../SectionSubHeader'
+import SectionDesc from '../SectionDesc'
+import ABBadge from "../ABBadge";
 import BTBadge from "../BTBadge";
 import TABadge from "../TABadge";
 import CPBadge from "../CPBadge";
 import DTBadge from "../DTBadge";
-import ABBadge from "../ABBadge";
 
-const Typography = () => {
-  const { brand } = useBrand();
+const ButtonSection = () => {
+    const { brand } = useBrand();
 
   return (
-    <div className="mb-10">
-      <SectionSubHeader anchor="typography">Typography</SectionSubHeader>
-      <SectionDesc>
-        Typography guidelines for all elements per brand
-      </SectionDesc>
-      {(brand === "all" ||
+    <div className='mb-10'>
+        <SectionSubHeader anchor="button">Button</SectionSubHeader>
+        <SectionDesc>Various buttons for different actions for each brand</SectionDesc>
+        {(brand === "all" ||
         brand === "bt" ||
         brand === "ta" ||
         brand === "cp" ||
         brand === "dt") && (
         <div className="mb-6">
-          <ABBadge />
+          <ABBadge/>
         </div>
       )}
       {(brand === "all" || brand === "bt") && (
         <div className="mb-6">
-          <BTBadge />
+          <BTBadge/>
         </div>
       )}
       {(brand === "all" || brand === "ta") && (
         <div className="mb-6">
-          <TABadge />
+          <TABadge/>
         </div>
       )}
       {(brand === "all" || brand === "cp") && (
         <div className="mb-6">
-          <CPBadge />
+          <CPBadge/>
         </div>
       )}
       {(brand === "all" || brand === "dt") && (
         <div className="mb-6">
-          <DTBadge />
+          <DTBadge/>
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Typography;
+export default ButtonSection

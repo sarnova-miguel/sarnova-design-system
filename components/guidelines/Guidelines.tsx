@@ -7,7 +7,7 @@ import AI from "./AI";
 
 const Guidelines = () => {
   return (
-    <section className="mb-12 md:mb-16">
+    <section className="section">
       <SectionHeader anchor="guidelines">Guidelines</SectionHeader>
       <TechStackDocs />
       <BestPractices />
