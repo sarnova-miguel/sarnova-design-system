@@ -125,7 +125,7 @@ const HeaderBrandFilter = () => {
 
       <div className="hidden md:block">
         <p className="text-sm mb-2 text-center">Filter by Brand:</p>
-        <div className="md:grid md:grid-cols-2 md:gap-4 lg:flex lg:flex-wrap lg:justify-center lg:items-center lg:gap-6">
+        <div className="flex flex-wrap justify-center items-center gap-6">
           <button
             className={`brand-filter-btn all sm:justify-self-end ${
               brand === "all" ? "active" : ""

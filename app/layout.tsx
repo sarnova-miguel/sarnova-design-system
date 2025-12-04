@@ -31,7 +31,9 @@ export default function RootLayout({
             <main className="md:flex md:gap-8">
               <MobileNavSidebar />
               <NavSidebar />
-              {children}
+              <div className="md:ml-72">
+                {children}
+              </div>
             </main>
           </Container>
         </BrandProvider>

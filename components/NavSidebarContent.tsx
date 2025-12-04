@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 const NavSidebarContent = ({ className }: { className?: string }) => {
   return (
     <aside className={cn("nav-sidebar", className)}>
-      <Accordion type="multiple" className="flex flex-col">
+      <Accordion type="single" collapsible className="flex flex-col">
         <AccordionItem value="item-1">
           <AccordionTrigger>Guidelines</AccordionTrigger>
           <AccordionContent>
