@@ -8,7 +8,13 @@ import {
 } from "@/components/ui/accordion";
 import { cn } from "@/lib/utils";
 
-const NavSidebarContent = ({ className }: { className?: string }) => {
+const NavSidebarContent = ({
+  className,
+  onLinkClick
+}: {
+  className?: string;
+  onLinkClick?: () => void;
+}) => {
   return (
     <aside className={cn("nav-sidebar", className)}>
       <Accordion type="single" collapsible className="flex flex-col">
@@ -16,10 +22,10 @@ const NavSidebarContent = ({ className }: { className?: string }) => {
           <AccordionTrigger>Guidelines</AccordionTrigger>
           <AccordionContent>
             <div className="flex flex-col gap-4">
-              <Link href={"#docs"}>Tech Stack Docs</Link>
-              <Link href={"#best-practices"}>Best Practices</Link>
-              <Link href={"#accessibility"}>Accessibility</Link>
-              <Link href={"#ai"}>AI</Link>
+              <Link href={"#docs"} onClick={onLinkClick}>Tech Stack Docs</Link>
+              <Link href={"#best-practices"} onClick={onLinkClick}>Best Practices</Link>
+              <Link href={"#accessibility"} onClick={onLinkClick}>Accessibility</Link>
+              <Link href={"#ai"} onClick={onLinkClick}>AI</Link>
             </div>
           </AccordionContent>
         </AccordionItem>
@@ -27,10 +33,10 @@ const NavSidebarContent = ({ className }: { className?: string }) => {
           <AccordionTrigger>Elements</AccordionTrigger>
           <AccordionContent>
             <div className="flex flex-col gap-4">
-              <Link href={"#colors"}>Colors</Link>
-              <Link href={"#icons"}>Icons</Link>
-              <Link href={"#spacing"}>Spacing</Link>
-              <Link href={"#typography"}>Typography</Link>
+              <Link href={"#colors"} onClick={onLinkClick}>Colors</Link>
+              <Link href={"#icons"} onClick={onLinkClick}>Icons</Link>
+              <Link href={"#spacing"} onClick={onLinkClick}>Spacing</Link>
+              <Link href={"#typography"} onClick={onLinkClick}>Typography</Link>
             </div>
           </AccordionContent>
         </AccordionItem>
@@ -38,19 +44,19 @@ const NavSidebarContent = ({ className }: { className?: string }) => {
           <AccordionTrigger>Components</AccordionTrigger>
           <AccordionContent>
             <div className="flex flex-col gap-4">
-              <Link href={"#breadcrumb"}>Breadcrumb</Link>
-              <Link href={"#button"}>Button</Link>
-              <Link href={"#carousel"}>Carousel</Link>
-              <Link href={"#checkbox"}>Checkbox</Link>
-              <Link href={"#dropdown"}>Dropdown</Link>
-              <Link href={"#form"}>Form</Link>
-              <Link href={"#link"}>Link</Link>
-              <Link href={"#list"}>List</Link>
-              <Link href={"#modal"}>Modal</Link>
-              <Link href={"#search"}>Search</Link>
-              <Link href={"#tabs"}>Tabs</Link>
-              <Link href={"#toggle"}>Toggle</Link>
-              <Link href={"#tooltip"}>Tooltip</Link>
+              <Link href={"#breadcrumb"} onClick={onLinkClick}>Breadcrumb</Link>
+              <Link href={"#button"} onClick={onLinkClick}>Button</Link>
+              <Link href={"#carousel"} onClick={onLinkClick}>Carousel</Link>
+              <Link href={"#checkbox"} onClick={onLinkClick}>Checkbox</Link>
+              <Link href={"#dropdown"} onClick={onLinkClick}>Dropdown</Link>
+              <Link href={"#form"} onClick={onLinkClick}>Form</Link>
+              <Link href={"#link"} onClick={onLinkClick}>Link</Link>
+              <Link href={"#list"} onClick={onLinkClick}>List</Link>
+              <Link href={"#modal"} onClick={onLinkClick}>Modal</Link>
+              <Link href={"#search"} onClick={onLinkClick}>Search</Link>
+              <Link href={"#tabs"} onClick={onLinkClick}>Tabs</Link>
+              <Link href={"#toggle"} onClick={onLinkClick}>Toggle</Link>
+              <Link href={"#tooltip"} onClick={onLinkClick}>Tooltip</Link>
             </div>
           </AccordionContent>
         </AccordionItem>
