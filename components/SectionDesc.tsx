@@ -1,8 +1,9 @@
+import { cn } from '@/lib/utils'
 import React from 'react'
 
-const SectionDesc = ({children}: {children: React.ReactNode}) => {
+const SectionDesc = ({children, className}: {children: React.ReactNode, className?: string}) => {
   return (
-    <p className='mb-4 text-base md:text-lg'>{children}</p>
+    <p className={cn('mb-4 text-base md:text-lg', className)}>{children}</p>
   )
 }
 
