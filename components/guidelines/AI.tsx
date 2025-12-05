@@ -94,7 +94,7 @@ const AI = () => {
           <p>
             The &ldquo;context window&rdquo; acts like the AI model&apos;s
             working memory. It is constrained to the current conversation and
-            any files you have provided. <span className="block">The conversation within the context window counts towards your token usage.</span>
+            any files you have provided. <span className="block mt-1">The conversation within the context window counts towards your token usage.</span>
           </p>
         </li>
         <li>
