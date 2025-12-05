@@ -1,7 +1,7 @@
 "use client";
 
 import { useBrand } from "@/context/BrandContext";
-import { useState } from "react";
+import { useState, useCallback, useRef, KeyboardEvent, RefObject } from "react";
 import Image from "next/image";
 import {
   Collapsible,
@@ -10,192 +10,224 @@ import {
 } from "@/components/ui/collapsible";
 import { ChevronDown } from "lucide-react";
 
+type BrandValue = "all" | "bt" | "ta" | "cp" | "dt";
+
+interface BrandOption {
+  value: BrandValue;
+  label: string;
+  imageSrc?: string;
+}
+
+const brandOptions: BrandOption[] = [
+  { value: "all", label: "All Brands" },
+  {
+    value: "bt",
+    label: "Bound Tree",
+    imageSrc:
+      "https://www.boundtree.com/medias/boundtree-logo.png?context=bWFzdGVyfGltYWdlc3w2NzA5fGltYWdlL3BuZ3xpbWFnZXMvaGMyL2hiMi84OTk0NzI1MDAzMjk0LnBuZ3w1NWI4ZTc3NTliZDgxZDAyOTVkNTZmYWNjZDUxMjNkNGQ4N2Y0MDM2ODA5YWUzYmE1YTc5NjJmZWFhMGU4NmFh",
+  },
+  {
+    value: "ta",
+    label: "Tri-anim",
+    imageSrc:
+      "https://www.tri-anim.com/ths/medias/TRIANIM-Header-logo.png?context=bWFzdGVyfGltYWdlc3wzODEzfGltYWdlL3BuZ3xpbWFnZXMvaDEyL2hhNS84OTk1MDk3MzEzMzEwLnBuZ3w5NzE1NWNlOTBiYzUyNjM3Mjk0MTE1ZDgxMmNhNzRhNjgzMzVmYjIyMWE2NGMwN2YyMDNmNTU0NDMxMDlhOWFi",
+  },
+  {
+    value: "cp",
+    label: "Cardio Partners",
+    imageSrc: "https://www.cardiopartners.com/assets/images/cp-logo.svg",
+  },
+  {
+    value: "dt",
+    label: "Digitech",
+    imageSrc:
+      "https://digitechcomputer.com/wp-content/uploads/2017/08/digitech-logo-252.png",
+  },
+];
+
 const HeaderBrandFilter = () => {
   const { brand, updateBrand } = useBrand();
   const [isOpen, setIsOpen] = useState(false);
+  const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
+  const desktopButtonRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  const handleKeyDown = useCallback(
+    (
+      e: KeyboardEvent<HTMLButtonElement>,
+      index: number,
+      refs: RefObject<(HTMLButtonElement | null)[]>
+    ) => {
+      const buttons = refs.current.filter(Boolean);
+      let nextIndex: number | null = null;
+
+      switch (e.key) {
+        case "ArrowRight":
+        case "ArrowDown":
+          e.preventDefault();
+          nextIndex = (index + 1) % buttons.length;
+          break;
+        case "ArrowLeft":
+        case "ArrowUp":
+          e.preventDefault();
+          nextIndex = (index - 1 + buttons.length) % buttons.length;
+          break;
+        case "Home":
+          e.preventDefault();
+          nextIndex = 0;
+          break;
+        case "End":
+          e.preventDefault();
+          nextIndex = buttons.length - 1;
+          break;
+      }
+
+      if (nextIndex !== null) {
+        buttons[nextIndex]?.focus();
+      }
+    },
+    []
+  );
+
+  const handleBrandSelect = useCallback(
+    (value: BrandValue, closeOnSelect = false) => {
+      updateBrand(value);
+      if (closeOnSelect) {
+        setIsOpen(false);
+      }
+    },
+    [updateBrand]
+  );
+
+  const getButtonClassName = (value: BrandValue, extraClasses = "") => {
+    return `brand-filter-btn ${value} ${extraClasses} ${brand === value ? "active" : ""}`.trim();
+  };
+
+  const setButtonRef = useCallback(
+    (
+      el: HTMLButtonElement | null,
+      index: number,
+      refs: RefObject<(HTMLButtonElement | null)[]>
+    ) => {
+      refs.current[index] = el;
+    },
+    []
+  );
+
+  const BrandButton = ({
+    option,
+    index,
+    refs,
+    closeOnSelect,
+    extraClasses = "",
+  }: {
+    option: BrandOption;
+    index: number;
+    refs: RefObject<(HTMLButtonElement | null)[]>;
+    closeOnSelect: boolean;
+    extraClasses?: string;
+  }) => {
+    const isSelected = brand === option.value;
+
+    return (
+      <button
+        ref={(el) => setButtonRef(el, index, refs)}
+        className={getButtonClassName(option.value, extraClasses)}
+        type="button"
+        role="radio"
+        aria-checked={isSelected}
+        aria-label={`Filter by ${option.label}`}
+        tabIndex={isSelected ? 0 : -1}
+        onClick={() => handleBrandSelect(option.value, closeOnSelect)}
+        onKeyDown={(e) => handleKeyDown(e, index, refs)}
+      >
+        {option.imageSrc ? (
+          <Image
+            src={option.imageSrc}
+            alt={option.label}
+            width={200}
+            height={60}
+            aria-hidden="true"
+          />
+        ) : (
+          <span>All</span>
+        )}
+        <span className="sr-only">{option.label}</span>
+      </button>
+    );
+  };
 
   return (
-    <>
+    <nav aria-label="Brand filter navigation">
+      {/* Mobile view */}
       <div className="md:hidden">
         <Collapsible open={isOpen} onOpenChange={setIsOpen}>
-          <CollapsibleTrigger>
-            <p className="text-sm mb-2 flex flex-row gap-2">
+          <CollapsibleTrigger
+            aria-expanded={isOpen}
+            aria-controls="brand-filter-mobile-content"
+            aria-label={`Filter by Brand. ${isOpen ? "Collapse menu" : "Expand menu"}`}
+          >
+            <span className="text-sm mb-2 flex flex-row gap-2">
               Filter by Brand:{" "}
               <ChevronDown
                 className={`transition-all duration-300 ${
                   isOpen ? "rotate-180" : ""
                 }`}
+                aria-hidden="true"
               />
-            </p>
+            </span>
           </CollapsibleTrigger>
-          <CollapsibleContent>
-            <div className="flex flex-col sm:grid sm:grid-cols-2 items-center gap-2 sm:gap-4">
-              <button
-                className={`brand-filter-btn all sm:justify-self-end ${
-                  brand === "all" ? "active" : ""
-                }`}
-                type="button"
-                onClick={() => {
-                  setIsOpen(false);
-                  updateBrand("all");
-                }}
-              >
-                All
-              </button>
-              <button
-                className={`brand-filter-btn bt ${
-                  brand === "bt" ? "active" : ""
-                }`}
-                type="button"
-                onClick={() => {
-                  updateBrand("bt");
-                  setIsOpen(false);
-                }}
-              >
-                <Image
-                  src={
-                    "https://www.boundtree.com/medias/boundtree-logo.png?context=bWFzdGVyfGltYWdlc3w2NzA5fGltYWdlL3BuZ3xpbWFnZXMvaGMyL2hiMi84OTk0NzI1MDAzMjk0LnBuZ3w1NWI4ZTc3NTliZDgxZDAyOTVkNTZmYWNjZDUxMjNkNGQ4N2Y0MDM2ODA5YWUzYmE1YTc5NjJmZWFhMGU4NmFh"
+          <CollapsibleContent id="brand-filter-mobile-content">
+            <div
+              className="flex flex-col sm:grid sm:grid-cols-2 items-center gap-2 sm:gap-4"
+              role="radiogroup"
+              aria-label="Select brand to filter"
+            >
+              {brandOptions.map((option, index) => (
+                <BrandButton
+                  key={option.value}
+                  option={option}
+                  index={index}
+                  refs={buttonRefs}
+                  closeOnSelect={true}
+                  extraClasses={
+                    option.value === "all" || option.value === "ta" || option.value === "dt"
+                      ? "sm:justify-self-end"
+                      : ""
                   }
-                  alt="Bound Tree"
-                  width={200}
-                  height={60}
                 />
-              </button>
-              <button
-                className={`brand-filter-btn ta sm:justify-self-end ${
-                  brand === "ta" ? "active" : ""
-                }`}
-                type="button"
-                onClick={() => {
-                  updateBrand("ta");
-                  setIsOpen(false);
-                }}
-              >
-                <Image
-                  src={
-                    "https://www.tri-anim.com/ths/medias/TRIANIM-Header-logo.png?context=bWFzdGVyfGltYWdlc3wzODEzfGltYWdlL3BuZ3xpbWFnZXMvaDEyL2hhNS84OTk1MDk3MzEzMzEwLnBuZ3w5NzE1NWNlOTBiYzUyNjM3Mjk0MTE1ZDgxMmNhNzRhNjgzMzVmYjIyMWE2NGMwN2YyMDNmNTU0NDMxMDlhOWFi"
-                  }
-                  alt="Tri-anim"
-                  width={200}
-                  height={60}
-                />
-              </button>
-              <button
-                className={`brand-filter-btn cp ${
-                  brand === "cp" ? "active" : ""
-                }`}
-                type="button"
-                onClick={() => {
-                  updateBrand("cp");
-                  setIsOpen(false);
-                }}
-              >
-                <Image
-                  src={
-                    "https://www.cardiopartners.com/assets/images/cp-logo.svg"
-                  }
-                  alt="Cardio Partners"
-                  width={200}
-                  height={60}
-                />
-              </button>
-              <button
-                className={`brand-filter-btn dt sm:justify-self-end ${
-                  brand === "dt" ? "active" : ""
-                }`}
-                type="button"
-                onClick={() => {
-                  updateBrand("dt");
-                  setIsOpen(false);
-                }}
-              >
-                <Image
-                  src={
-                    "https://digitechcomputer.com/wp-content/uploads/2017/08/digitech-logo-252.png"
-                  }
-                  alt="Digitech"
-                  width={200}
-                  height={60}
-                />
-              </button>
+              ))}
             </div>
           </CollapsibleContent>
         </Collapsible>
       </div>
 
+      {/* Desktop view */}
       <div className="hidden md:block">
-        <p className="text-sm mb-2 text-center">Filter by Brand:</p>
-        <div className="flex flex-wrap justify-center items-center gap-6">
-          <button
-            className={`brand-filter-btn all sm:justify-self-end ${
-              brand === "all" ? "active" : ""
-            }`}
-            type="button"
-            onClick={() => updateBrand("all")}
-          >
-            All
-          </button>
-          <button
-            className={`brand-filter-btn bt ${brand === "bt" ? "active" : ""}`}
-            type="button"
-            onClick={() => updateBrand("bt")}
-          >
-            <Image
-              src={
-                "https://www.boundtree.com/medias/boundtree-logo.png?context=bWFzdGVyfGltYWdlc3w2NzA5fGltYWdlL3BuZ3xpbWFnZXMvaGMyL2hiMi84OTk0NzI1MDAzMjk0LnBuZ3w1NWI4ZTc3NTliZDgxZDAyOTVkNTZmYWNjZDUxMjNkNGQ4N2Y0MDM2ODA5YWUzYmE1YTc5NjJmZWFhMGU4NmFh"
+        <p id="brand-filter-label" className="text-sm mb-2 text-center">
+          Filter by Brand:
+        </p>
+        <div
+          className="flex flex-wrap justify-center items-center gap-6"
+          role="radiogroup"
+          aria-labelledby="brand-filter-label"
+        >
+          {brandOptions.map((option, index) => (
+            <BrandButton
+              key={option.value}
+              option={option}
+              index={index}
+              refs={desktopButtonRefs}
+              closeOnSelect={false}
+              extraClasses={
+                option.value === "all" || option.value === "ta" || option.value === "dt"
+                  ? "md:justify-self-end"
+                  : ""
               }
-              alt="Bound Tree"
-              width={200}
-              height={60}
             />
-          </button>
-          <button
-            className={`brand-filter-btn ta md:justify-self-end ${
-              brand === "ta" ? "active" : ""
-            }`}
-            type="button"
-            onClick={() => updateBrand("ta")}
-          >
-            <Image
-              src={
-                "https://www.tri-anim.com/ths/medias/TRIANIM-Header-logo.png?context=bWFzdGVyfGltYWdlc3wzODEzfGltYWdlL3BuZ3xpbWFnZXMvaDEyL2hhNS84OTk1MDk3MzEzMzEwLnBuZ3w5NzE1NWNlOTBiYzUyNjM3Mjk0MTE1ZDgxMmNhNzRhNjgzMzVmYjIyMWE2NGMwN2YyMDNmNTU0NDMxMDlhOWFi"
-              }
-              alt="Tri-anim"
-              width={200}
-              height={60}
-            />
-          </button>
-          <button
-            className={`brand-filter-btn cp ${brand === "cp" ? "active" : ""}`}
-            type="button"
-            onClick={() => updateBrand("cp")}
-          >
-            <Image
-              src={"https://www.cardiopartners.com/assets/images/cp-logo.svg"}
-              alt="Cardio Partners"
-              width={200}
-              height={60}
-            />
-          </button>
-          <button
-            className={`brand-filter-btn dt md:justify-self-end ${
-              brand === "dt" ? "active" : ""
-            }`}
-            type="button"
-            onClick={() => updateBrand("dt")}
-          >
-            <Image
-              src={
-                "https://digitechcomputer.com/wp-content/uploads/2017/08/digitech-logo-252.png"
-              }
-              alt="Digitech"
-              width={200}
-              height={60}
-            />
-          </button>
+          ))}
         </div>
       </div>
-    </>
+    </nav>
   );
 };
 
