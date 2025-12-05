@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`BTBadge Snapshot should match snapshot 1`] = `
+<p
+  class="brand-badge bg-yellow-400 text-black"
+>
+  Bound Tree
+</p>
+`;

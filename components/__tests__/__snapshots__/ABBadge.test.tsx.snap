@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`ABBadge Snapshot should match snapshot 1`] = `
+<p
+  class="brand-badge bg-gray-300 text-black"
+>
+  All Brands
+</p>
+`;
