@@ -13,6 +13,41 @@ const AI = () => {
       </SectionDesc>
       <ul className="list-disc ps-8 space-y-1 mb-4">
         <li>
+          <p>Augment/VS Code Keyboard Shortcuts:</p>
+          <ul className="list-disc ps-8 space-y-1">
+            <li>
+              <p>
+                Accept inline code suggestion: <span className="code">Tab</span>
+              </p>
+            </li>
+            <li>
+              <p>
+                Accept inline code suggestion word by word: <span className="code">Ctrl + &rarr;</span>
+              </p>
+            </li>
+            <li>
+              <p>
+                Open Command Pallete: <span className="code">Ctrl + Shift + P</span>
+              </p>
+            </li>
+            <li>
+              <p>
+                Open Augment Panel: <span className="code">Ctrl + L</span>
+              </p>
+            </li>
+            <li>
+              <p>
+                Toggle Sidebar Panel: <span className="code">Ctrl + B</span>
+              </p>
+            </li>
+            <li>
+              <p>
+                Start an instruction: <span className="code">Ctrl + I</span>
+              </p>
+            </li>
+          </ul>
+        </li>
+        <li>
           <p className="mb-1">Different AI Modes</p>
           <ul className="list-disc ps-8 space-y-1">
             <li>
@@ -26,7 +61,12 @@ const AI = () => {
             <li>
               <p>
                 <strong>Agent:</strong> Instruct AI to complete a task (ie. fix a bug, add a
-                feature, etc.)
+                feature, etc.) with user approval for certain actions
+              </p>
+            </li>
+            <li>
+              <p>
+                <span className="text-red-800 font-semibold">CAUTION!</span> <strong>YOLO Agent:</strong> Instruct AI to complete a task <strong>WITHOUT</strong> user approval for any actions 😮
               </p>
             </li>
           </ul>
@@ -35,7 +75,7 @@ const AI = () => {
           <p>
             Different AI models specialize in different areas. For example, some
             models are better at writing code (Claude Sonnet), while others are better at
-            ideation (ChatGPT) or copywriting (Jasper).
+            planning (ChatGPT) or copywriting (Jasper).
           </p>
         </li>
         <li>
@@ -54,14 +94,14 @@ const AI = () => {
           <p>
             The &ldquo;context window&rdquo; acts like the AI model&apos;s
             working memory. It is constrained to the current conversation and
-            any files you have provided.
+            any files you have provided. <span className="block">The conversation within the context window counts towards your token usage.</span>
           </p>
         </li>
         <li>
           <p>
             Start a new conversation when you start working on a new task or
             issue. This will help with efficiently utilizing your tokens and
-            help prevent hallucinations.
+            help prevent AI hallucinations.
           </p>
         </li>
         <li>
